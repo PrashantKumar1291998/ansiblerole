@@ -1,0 +1,11 @@
+---
+# tasks file for hostnginx
+- name: Create a file
+  file:
+    path: /tmp/abc
+    state: touch
+
+- name: Install
+  apt: 
+    name: xclip
+    state: present
