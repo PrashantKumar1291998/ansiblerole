@@ -1,2 +1,6 @@
 ---
 # defaults file for hostnginx
+pathofnginx: /etc/nginx
+servername: opstree.com
+name: prashant
+webpagepath: /var/www

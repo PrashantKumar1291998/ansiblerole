@@ -1,11 +1,7 @@
 ---
 # tasks file for hostnginx
-- name: Create a file
-  file:
-    path: /tmp/abc
-    state: touch
+# - name: Install nginx based on os
+  # include: install.yaml
 
-- name: Install
-  apt: 
-    name: xclip
-    state: present
+- name: Configure and host web page 
+  include: configure.yaml

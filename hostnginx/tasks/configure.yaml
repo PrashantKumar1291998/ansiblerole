@@ -1,0 +1,28 @@
+---
+- name: Make a directory for webpages
+  file:
+    path: "{{ webpagepath }}/{{ servername }}"
+    state: directory
+
+- name: Add index.html to it
+  template: 
+    src: index.html.j2
+    dest: "{{ webpagepath }}/{{ servername }}/index.html"
+
+- name: Copy config to site-available
+  template: 
+    src: config.j2
+    dest: "{{ pathofnginx }}/sites-available/{{ servername }}"
+  notify: Start nginx
+  
+- name: Remove default link
+  file:
+    state: absent
+    path: "{{ pathofnginx }}/sites-enabled/default"
+
+- name: Add a symbolink link to site-enabled
+  file:
+    state: link
+    src: "{{ pathofnginx }}/sites-available/{{ servername }}"
+    path: "{{ pathofnginx }}/sites-enabled/{{ servername }}"
+  
