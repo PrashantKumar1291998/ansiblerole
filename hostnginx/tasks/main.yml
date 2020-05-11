@@ -1,7 +1,7 @@
 ---
 # tasks file for hostnginx
-# - name: Install nginx based on os
-  # include: install.yaml
+- name: Install nginx based on os
+  include: install.yaml
 
 - name: Configure and host web page 
   include: configure.yaml
